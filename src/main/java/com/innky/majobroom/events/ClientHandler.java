@@ -30,7 +30,9 @@ public class ClientHandler {
             } else {
                 if (Minecraft.getInstance().player != null) {
                     if (event.getEntityMounting().getUUID() == Minecraft.getInstance().player.getUUID()) {
-                        Minecraft.getInstance().options.setCameraType(CameraType.FIRST_PERSON);
+                        if (Config.AUTO_PERSPECTIVE.get()) {
+                            Minecraft.getInstance().options.setCameraType(CameraType.FIRST_PERSON);
+                        }
                     }
                     ((MajoBroom) event.getEntityBeingMounted()).hasPassenger = false;
                 }
