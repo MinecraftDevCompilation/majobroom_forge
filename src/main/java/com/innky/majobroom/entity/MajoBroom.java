@@ -51,9 +51,8 @@ import org.lwjgl.glfw.GLFW;
 import java.util.List;
 
 
-
-
-
+import static com.innky.majobroom.registry.KeyboardRegistry.UP_KEY;
+import static com.innky.majobroom.registry.KeyboardRegistry.DOWN_KEY;
 
 
 
@@ -497,15 +496,13 @@ public class MajoBroom extends Boat {
 
             assert Minecraft.getInstance().player != null;
             if (getPassengers().get(0).getUUID() == Minecraft.getInstance().player.getUUID()) {
-                final var options = Minecraft.getInstance().options;
-                up = options.keyJump.isDown();
-                down = options.keySprint.isDown();
+                up = UP_KEY.isDown();
+                down = DOWN_KEY.isDown();
 
             }else {
                 up = down = false;
             }
         }else {
-
             up = down = false;
         }
     }
