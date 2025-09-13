@@ -51,9 +51,8 @@ import org.lwjgl.glfw.GLFW;
 import java.util.List;
 
 
-import static com.innky.majobroom.registry.KeyboardRegistry.UP_KEY;
-import static com.innky.majobroom.registry.KeyboardRegistry.DOWN_KEY;
-
+import static com.innky.majobroom.events.KeyBoardInput.UP_KEY;
+import static com.innky.majobroom.events.KeyBoardInput.DOWN_KEY;
 
 
 public class MajoBroom extends Boat {
