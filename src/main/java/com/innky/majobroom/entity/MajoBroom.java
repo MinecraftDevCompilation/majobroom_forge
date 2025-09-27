@@ -186,6 +186,15 @@ public class MajoBroom extends Boat {
                 f -= 0.01F*playerSpeed*4;
             }
 
+            if (!this.inputUp && !this.inputDown) {
+                Vec3 motion = this.getDeltaMovement();
+                double speed = Math.sqrt(motion.x * motion.x + motion.z * motion.z);
+                double friction = speed > 0.2 ? 0.5 : 0.8;
+                Vec3 slowed = new Vec3(motion.x * friction, motion.y, motion.z * friction);
+                this.setDeltaMovement(slowed);
+            }
+
+            
             Vec3 v3d = this.getDeltaMovement().add((double)(Mth.sin(-this.yRot * ((float)Math.PI / 180F)) * f), 0.0D, (double)(Mth.cos(this.yRot * ((float)Math.PI / 180F)) * f));
             float currentY = (float) v3d.y;
             float maxYspeed = 0.3f*playerSpeed*2;
@@ -322,7 +331,6 @@ public class MajoBroom extends Boat {
             boolean flag2 =  checkBlockCollision(this.getBoundingBox().move(vector3d.add(0,-0.1,0)));
             boolean flag3 =  checkBlockCollision(this.getBoundingBox().move(vector3d.add(0,0.2,0)));
             if(!flag1 && flag2 && !flag3){
-//                System.out.println(1111);
                 vector3d = vector3d.add(0,0.1,0);
 
             }
@@ -337,12 +345,8 @@ public class MajoBroom extends Boat {
 
             if(v2.subtract(vector3d).lengthSqr()>0.0001){
                 this.setDeltaMovement(v2.z, v2.y, -v2.x);
-//                System.out.println(this.level.getBlockState(this.getPosition()).isSolid()+" "+this.getPosition());
             }else {
-
             }
-
-
         }
 
         else {
@@ -354,12 +358,7 @@ public class MajoBroom extends Boat {
 
         if (!this.getPassengers().isEmpty()){
             Entity entity = this.getPassengers().get(0);
-
-
             playerSpeed = 0.9f;
-
-
-
             numMajoWearable = 0;
             entity.getArmorSlots().forEach((a)->{
                 if (a.getItem() instanceof MajoWearableItem){
