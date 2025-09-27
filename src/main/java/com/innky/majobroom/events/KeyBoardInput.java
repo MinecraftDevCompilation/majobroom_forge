@@ -62,7 +62,7 @@ public class KeyBoardInput {
             
             if (DOWN_KEY.getKey().getValue() == GLFW.GLFW_KEY_LEFT_SHIFT
                 && !Config.SHIFT_TO_DISMOUNT.get()) {
-                Minecraft.getInstance().player.setShi`ftKeyDown(false);
+                Minecraft.getInstance().player.setShiftKeyDown(false);
             }
         }
         if (SUMMON_KEY.isDown() && event.getAction() == GLFW.GLFW_PRESS){
