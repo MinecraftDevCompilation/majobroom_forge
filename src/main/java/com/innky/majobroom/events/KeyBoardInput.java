@@ -5,6 +5,7 @@ import com.innky.majobroom.network.Networking;
 import com.innky.majobroom.network.RidePack;
 import com.innky.majobroom.network.SummonBroomPack;
 import com.innky.majobroom.registry.ItemRegistry;
+import com.innky.majobroom.utils.Config;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
@@ -57,6 +58,11 @@ public class KeyBoardInput {
                 down = true;
             }else if (event.getAction() == GLFW.GLFW_RELEASE){
                 down = false;
+            }
+            
+            if (DOWN_KEY.getKey().getValue() == GLFW.GLFW_KEY_LEFT_SHIFT
+                && !Config.SHIFT_TO_DISMOUNT.get()) {
+                Minecraft.getInstance().player.setShi`ftKeyDown(false);
             }
         }
         if (SUMMON_KEY.isDown() && event.getAction() == GLFW.GLFW_PRESS){
