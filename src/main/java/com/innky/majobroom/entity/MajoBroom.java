@@ -199,7 +199,7 @@ public class MajoBroom extends Boat {
             float currentY = (float) v3d.y;
             float maxYspeed = 0.3f*playerSpeed*2;
             float yacc = 0.05f*playerSpeed*1.5f;
-            float ydec = 0.06f;
+            float ydec = 0.02f;
             if (currentY >0){
                 if (up&&down){
                 }else if(up){
