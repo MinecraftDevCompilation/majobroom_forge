@@ -5,7 +5,7 @@ import com.innky.majobroom.network.Networking;
 import com.innky.majobroom.network.RidePack;
 import com.innky.majobroom.network.SummonBroomPack;
 import com.innky.majobroom.registry.ItemRegistry;
-import com.innky.majobroom.utils.Config;
+import com.innky.majobroom.utills.Config;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
