@@ -17,12 +17,12 @@ import net.minecraft.world.level.Level;
 
 import com.innky.majobroom.armors.MajoWearableItem;
 import com.innky.majobroom.events.KeyBoardInput;
+import com.innky.majobroom.entity.ClientBroomLogic;
 import com.innky.majobroom.network.Networking;
 import com.innky.majobroom.network.RidePack;
 import com.innky.majobroom.sound.FlyingSound;
 import com.innky.majobroom.registry.ItemRegistry;
 import com.innky.majobroom.utills.CommonConfig;
-import com.innky.majobroom.utills.ClientConfig;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.*;
@@ -291,7 +291,7 @@ public class MajoBroom extends Boat {
     public void tick() {
         Entity passenger = this.getFirstPassenger();
         if (level().isClientSide && passenger instanceof Player player) {
-            DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> () -> {
+            DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> {
                 if (!ClientConfig.SHIFT_TO_DISMOUNT.get()) {
                     player.setShiftKeyDown(false);
                 }
