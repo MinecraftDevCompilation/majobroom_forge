@@ -14,7 +14,7 @@ public class ClientConfigEvents {
 
     @SubscribeEvent
     public static void onConfigReload(ModConfigEvent.Reloading event) {
-        if (event.getConfig().getType() == ModConfig.Type.CLIENT) {
+        if (event.getConfig().getType() == ModConfig.Type.CLIENT && Networking.INSTANCE != null) {
             boolean shiftToDismount = ClientConfig.SHIFT_TO_DISMOUNT.get();
             Networking.INSTANCE.sendToServer(new ClientConfigSyncPack(shiftToDismount));
         }
@@ -22,7 +22,7 @@ public class ClientConfigEvents {
 
     @SubscribeEvent
     public static void onConfigChanged(ModConfigEvent.Loading event) {
-        if (event.getConfig().getType() == ModConfig.Type.CLIENT) {
+        if (event.getConfig().getType() == ModConfig.Type.CLIENT && Networking.INSTANCE != null) {
             boolean shiftToDismount = ClientConfig.SHIFT_TO_DISMOUNT.get();
             Networking.INSTANCE.sendToServer(new ClientConfigSyncPack(shiftToDismount));
         }
