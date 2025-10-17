@@ -18,7 +18,7 @@ public class ServerEventHandler {
         if (!event.isDismounting()) return; 
 
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
-        if (!(event.getMount() instanceof MajoBroomEntity broom)) return;
+        if (!(event.getEntityBeingMounted() instanceof MajoBroom broom)) return;
 
         if (!PlayerConfigStorage.getShiftToDismount(player)) {
             event.setCanceled(true); // 阻止下坐骑
