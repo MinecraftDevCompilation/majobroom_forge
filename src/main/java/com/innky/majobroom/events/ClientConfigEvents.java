@@ -4,9 +4,10 @@ import com.innky.majobroom.network.ClientConfigSyncPack;
 import com.innky.majobroom.network.Networking;
 import com.innky.majobroom.utills.ClientConfig;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.event.config.ModConfigEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.config.ModConfigEvent;
 
 @Mod.EventBusSubscriber(modid = "majobroom", bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientConfigEvents {
