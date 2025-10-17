@@ -17,7 +17,6 @@ import net.minecraft.world.level.Level;
 
 import com.innky.majobroom.armors.MajoWearableItem;
 import com.innky.majobroom.events.KeyBoardInput;
-import com.innky.majobroom.entity.ClientBroomLogic;
 import com.innky.majobroom.network.Networking;
 import com.innky.majobroom.network.RidePack;
 import com.innky.majobroom.sound.FlyingSound;
