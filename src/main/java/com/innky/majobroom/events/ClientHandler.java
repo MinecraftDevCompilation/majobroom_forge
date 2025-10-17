@@ -2,7 +2,7 @@ package com.innky.majobroom.events;
 
 import com.innky.majobroom.entity.MajoBroom;
 import com.innky.majobroom.sound.FlyingSound;
-import com.innky.majobroom.utills.Config;
+import com.innky.majobroom.utills.ClientConfig;
 import net.minecraft.client.CameraType;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
@@ -19,7 +19,7 @@ public class ClientHandler {
 
                 if(Minecraft.getInstance().player != null) {
                     if (event.getEntityMounting().getUUID() == Minecraft.getInstance().player.getUUID()) {
-                        if (Config.AUTO_PERSPECTIVE.get()) {
+                        if (ClientConfig.AUTO_PERSPECTIVE.get()) {
                             Minecraft.getInstance().options.setCameraType(CameraType.THIRD_PERSON_BACK);
                         }
                         broom.hasPassenger = true;
@@ -30,7 +30,7 @@ public class ClientHandler {
             } else {
                 if (Minecraft.getInstance().player != null) {
                     if (event.getEntityMounting().getUUID() == Minecraft.getInstance().player.getUUID()) {
-                        if (Config.AUTO_PERSPECTIVE.get()) {
+                        if (ClientConfig.AUTO_PERSPECTIVE.get()) {
                             Minecraft.getInstance().options.setCameraType(CameraType.FIRST_PERSON);
                         }
                     }

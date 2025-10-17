@@ -21,7 +21,8 @@ import com.innky.majobroom.network.Networking;
 import com.innky.majobroom.network.RidePack;
 import com.innky.majobroom.sound.FlyingSound;
 import com.innky.majobroom.registry.ItemRegistry;
-import com.innky.majobroom.utills.Config;
+import com.innky.majobroom.utills.CommonConfig;
+import com.innky.majobroom.utills.ClientConfig;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.*;
@@ -45,6 +46,7 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.NotNull;
 import org.lwjgl.glfw.GLFW;
@@ -289,18 +291,17 @@ public class MajoBroom extends Boat {
     public void tick() {
         Entity passenger = this.getFirstPassenger();
         if (level().isClientSide && passenger instanceof Player player) {
-            if (!Config.SHIFT_TO_DISMOUNT.get()) {
-                player.setShiftKeyDown(false);
-            }
+            DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> () -> {
+                if (!ClientConfig.SHIFT_TO_DISMOUNT.get()) {
+                    player.setShiftKeyDown(false);
+                }
+                return null;
+            });
         }
-        //if (passenger instanceof Player player && !Config.SHIFT_TO_DISMOUNT.get()){
-            //player.setShiftKeyDown(false);
-        //}
         if (!level().isClientSide){
-            entityData.set(configSpeed, Config.MAX_SPEED.get());
-            entityData.set(configAdvancedMode,Config.ADVANCED_MODE.get());
+            entityData.set(configSpeed, CommonConfig.MAX_SPEED.get());
+            entityData.set(configAdvancedMode,CommonConfig.ADVANCED_MODE.get());
         }
-//        System.out.println();
         if(level().isClientSide){
             updateControl();
 
