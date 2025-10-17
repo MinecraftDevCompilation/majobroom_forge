@@ -17,9 +17,6 @@ import net.minecraftforge.registries.RegistryObject;
 public class ClientEventHandler {
     @SubscribeEvent
     public static void onClientSetUpEvent(EntityRenderersEvent.RegisterRenderers event) {
-//        System.out.println(111);
-//        RegistryObject a = EntityTypeRegistry.majoBroom;
-//        IForgeRegistryEntry b = a.get();
         event.registerEntityRenderer(EntityTypeRegistry.majoBroom.get(), BroomRenderer::new);
         ItemColors itemColors = Minecraft.getInstance().itemColors;
         itemColors.register((stack, color) -> {

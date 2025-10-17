@@ -36,6 +36,13 @@ public class Networking {
                 SummonBroomPack::new,
                 SummonBroomPack::handler
         );
+        INSTANCE.registerMessage(
+                nextID(),
+                ClientConfigSyncPack.class,
+                ClientConfigSyncPack::toBytes,
+                ClientConfigSyncPack::new,
+                ClientConfigSyncPack::handler
+        );
 
     }
 }
