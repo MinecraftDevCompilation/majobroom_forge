@@ -19,9 +19,10 @@ public class ClientLoginHandler {
     public static void onClientTick(TickEvent.ClientTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
         if (sent) return;
+        Minecraft mc = Minecraft.getInstance();
 
         LocalPlayer player = Minecraft.getInstance().player;
-        if (player != null && Networking.INSTANCE != null) {
+        if (player != null && mc.getConnection() != null && Networking.INSTANCE != null) {
             boolean shiftToDismount = ClientConfig.SHIFT_TO_DISMOUNT.get();
             Networking.INSTANCE.sendToServer(new ClientConfigSyncPack(shiftToDismount));
             sent = true;
