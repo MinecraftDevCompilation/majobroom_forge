@@ -6,7 +6,7 @@ import com.innky.majobroom.utills.ClientConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.network.ClientPlayerNetworkEvent.LoggedInEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -16,16 +16,10 @@ public class ClientLoginHandler {
     private static boolean sent = false;
 
     @SubscribeEvent
-    public static void onClientTick(TickEvent.ClientTickEvent event) {
-        if (event.phase != TickEvent.Phase.END) return;
-        if (sent) return;
-        Minecraft mc = Minecraft.getInstance();
-
-        LocalPlayer player = Minecraft.getInstance().player;
-        if (player != null && mc.getConnection() != null && Networking.INSTANCE != null) {
+    public static void onClientJoin(LoggedInEvent event) {
+        if (Networking.INSTANCE != null) {
             boolean shiftToDismount = ClientConfig.SHIFT_TO_DISMOUNT.get();
             Networking.INSTANCE.sendToServer(new ClientConfigSyncPack(shiftToDismount));
-            sent = true;
         }
     }
 }
