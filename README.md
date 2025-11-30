@@ -1,3 +1,5 @@
+这个版本不再使用，新版本见 https://github.com/GLDYM/MajoBroom-KOTS 。
+
 Forge version of Majo's Broom - 1.20.1
 
 这个版本是给 https://github.com/FDCraft/TsuriNoGatsu5 使用的，因此数值非常超模；如果需要在正常生存使用请用 https://github.com/ponyofshadows/majobroom_forge 。
